@@ -57,10 +57,18 @@ ul {
   letter-spacing: 0.02em;
   color: #2e2f42;
 }
-.nav-links-first-item:hover,
-.nav-links-first-item:focus,
-.nav-links-first-item:active {
+
+.nav-links-item:hover,
+.nav-links-item:focus {
   color: #404bbf;
+  transition: color 250ms ease-in-out;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.active::after {
+  content: "";
+  display: block;
+  border-bottom: 2px solid #404bbf;
+  margin-top: -2px;
 }
 .address-normal {
   font-style: normal;
@@ -79,15 +87,21 @@ ul {
 .address-contacts:focus,
 .address-contacts:active {
   color: #404bbf;
+  transition: color 250ms ease-in-out;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .section {
   padding: 120px 0;
 }
 .hero {
   background-color: #2e2f42;
-  background-image: url("../../images/people-office.png");
+
+  background: url(../../images/people-office.png),
+    lightgray 0px -167.766px / 100% 139.922% no-repeat;
+
+  /* background-image: url("../../images/people-office.png"); */
   background-repeat: no-repeat;
-  background-size: cover;
+  background-position: center;
   text-align: center;
   padding: 188px 0;
 }
@@ -120,6 +134,8 @@ ul {
 .hero-btn:hover,
 .hero-btn:focus {
   background-color: #404bbf;
+  transition: background-color 250ms ease-in-out;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .visually-hidden {
   position: absolute;
@@ -157,7 +173,7 @@ ul {
   font-size: 20px;
   line-height: 1.2;
   letter-spacing: 0.02em;
-  color: #2e2f42; 
+  color: #2e2f42;
 }
 .advantages-text,
 .team-item-text,
@@ -169,7 +185,42 @@ ul {
   letter-spacing: 0.02em;
   color: #434455;
 }
+/* portfolio-overlay */
+.box {
+  position: relative;
+  width: 360px;
+  height: 300px;
+  margin: 0 auto;
+  background-color: #bdbdbd;
+  overflow: hidden;
+}
+.portfolio-overlay {
+   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #3f51b5;
 
+  transform: translatey(100%);
+  transition: transform 250ms ease-in-out;
+  /* max-width: 360px;
+  min-height: 300px; */
+  padding: 40px 32px 164px 32px;
+  background: #4d5ae5;
+  color: #f4f4fd;
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  
+}
+.box:hover .portfolio-overlay {
+  
+  transform: translatey(0);
+  transition: transform 1000ms ease-in-out;
+}
+ 
 .team-items {
   display: flex;
   gap: 24px;
@@ -178,18 +229,16 @@ ul {
   background-color: #f4f4fd;
 }
 .team-content {
-      display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   padding: 32px 0;
 }
 .team-item-title {
   text-align: center;
-  
 }
 .team-item-text {
   text-align: center;
-
 }
 .team-title,
 .portfolio-title {
@@ -205,11 +254,9 @@ ul {
   background-color: #ffffff;
   flex-basis: calc((100% - 72px) / 4);
   display: inline-flex;
-
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* gap: 32px; */
   border-radius: 0px 0px 4px 4px;
   box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
     0px 1px 1px 0px rgba(46, 47, 66, 0.16),
@@ -229,6 +276,13 @@ ul {
   flex-shrink: 0;
   width: calc((100% - 48px) / 3);
 }
+.portfolio-item:hover {
+  box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
+    0px 1px 1px 0px rgba(46, 47, 66, 0.16),
+    0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+  transition: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 .portfolio-item-title {
   margin-bottom: 8px;
 }
@@ -247,43 +301,52 @@ ul {
   background-color: #2e2f42;
   padding: 100px 0;
 }
-.footer-content{
+.footer-content {
   display: flex;
 }
 .footer-logo {
   display: inline-block;
   margin-bottom: 16px;
 }
-.footer-logo-content{
+.footer-logo-content {
   margin-right: 120px;
 }
 .footer-studio {
   color: #f4f4fd;
 }
-.footer-text { 
+.footer-text {
   font-size: 16px;
   line-height: 1.5;
   color: #f4f4fd;
   letter-spacing: 0.02em;
   width: 264px;
 }
-.soc-title{
-  color: #FFF;
-font-size: 16px; 
-font-weight: 500;
-line-height: 1.5;  
-letter-spacing: 0.02em;
+.soc-title {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
 }
-.footer-soc{
+.footer-soc {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-.soc-icon{
+.soc-icon {
   display: flex;
   gap: 24px;
+  height: 40px;
 }
-.footer-soc-icon{
+.icon:hover * {
+  stroke: red;
+  fill: red;
+  transition: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-soc-icon {
   display: flex;
   gap: 16px;
+  height: 40px;
 }
