@@ -96,7 +96,7 @@ ul {
 .hero {
   background-color: #2e2f42;
 
-  background: url(../../images/people-office.png),
+  background: url(../images/people-office.png),
     lightgray 0px -167.766px / 100% 139.922% no-repeat;
 
   /* background-image: url("../../images/people-office.png"); */
