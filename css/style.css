@@ -21,6 +21,7 @@ ul {
 }
 .header {
   border-bottom: 1px solid #e7e9fc;
+  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 .header-item {
   display: flex;
@@ -64,11 +65,24 @@ ul {
   transition: color 250ms ease-in-out;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+.active{
+  position: relative;
+ color: #404bbf;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 .active::after {
   content: "";
   display: block;
-  border-bottom: 2px solid #404bbf;
+  position: absolute;
+  left: 0;
+  bottom: -1px; 
+  height: 4px; 
+   /*color: #404bbf; */
+  background-color: #404bbf;
+   
+  border-radius: 2px;
   margin-top: -2px;
+  
 }
 .address-normal {
   font-style: normal;
@@ -82,6 +96,7 @@ ul {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: #434455;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .address-contacts:hover,
 .address-contacts:focus,
@@ -94,14 +109,17 @@ ul {
   padding: 120px 0;
 }
 .hero {
+  margin: 0 auto;
   background-color: #2e2f42;
-
-  background: url(../images/people-office.png),
-    lightgray 0px -167.766px / 100% 139.922% no-repeat;
-
-  /* background-image: url("../../images/people-office.png"); */
+  max-width: 1440px;
+  background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/people-office.jpg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover; 
   text-align: center;
   padding: 188px 0;
 }
@@ -130,6 +148,7 @@ ul {
   border-radius: 4px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   min-width: 169px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-btn:hover,
 .hero-btn:focus {
@@ -161,10 +180,10 @@ ul {
   width: calc((100% - 72px) / 4);
 }
 .advantages-item-icon {
-  padding: 21px 100px;
+  /* padding: 21px 100px; */
   border-radius: 4px;
-  border: 1px solid var(--LIGHT-SLATE, #8e8f99);
-  background: var(--CLOUD, #f4f4fd);
+  border: 1px solid  #8e8f99;
+  background:  #f4f4fd;
 }
 .advantages-item-title,
 .team-item-title,
@@ -195,7 +214,7 @@ ul {
   overflow: hidden;
 }
 .portfolio-overlay {
-   position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -213,14 +232,12 @@ ul {
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  
 }
 .box:hover .portfolio-overlay {
-  
   transform: translatey(0);
   transition: transform 1000ms ease-in-out;
 }
- 
+
 .team-items {
   display: flex;
   gap: 24px;
